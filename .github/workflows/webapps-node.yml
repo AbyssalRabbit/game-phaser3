@@ -31,6 +31,7 @@ jobs:
       - name: Check
         run: |
           cd ..
+          pwd
           ls -a
 
       - name: Deploy to VPS

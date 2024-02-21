@@ -28,6 +28,10 @@ jobs:
     needs: build
 
     steps:
+      - name: Check
+        run: |
+          ls -a
+
       - name: Deploy to VPS
         uses: cross-the-world/ssh-scp-ssh-pipelines@latest
         with:

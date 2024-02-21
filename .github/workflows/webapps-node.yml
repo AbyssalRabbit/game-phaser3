@@ -28,9 +28,9 @@ jobs:
         uses: cross-the-world/ssh-scp-ssh-pipelines@latest
         with:
           host: ${{ secrets.SSH_HOST }}
-          user: ${{ secrets.SSH_USERNAME }}
+          user: ${{ secrets.SSH_USER }}
           port: ${{ secrets.SSH_PORT }}
-          pass: ${{ secrets.SSH_PRIVATE_KEY }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
           connect_timeout: 10s
           scp: |
             './dist/*' => $WEBAPP_TARGET_PATH

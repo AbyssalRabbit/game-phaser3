@@ -10,10 +10,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: "npm"
@@ -31,18 +32,22 @@ jobs:
       - name: Check
         run: |
           ls -a
+          pwd
+          cd ..
+          ls -a
+          pwd
 
-      - name: Deploy to VPS
-        uses: cross-the-world/ssh-scp-ssh-pipelines@latest
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          user: ${{ secrets.SSH_USERNAME }}
-          port: ${{ secrets.SSH_PORT }}
-          pass: ${{ secrets.SSH_PRIVATE_KEY }}
-          connect_timeout: 10s
-          first_ssh: |
-            mkdir -p /root/web/first_ssh &&
-          scp: |
-            './dist/*' => $WEBAPP_TARGET_PATH
-          last_ssh: |
-            mkdir -p /root/web/last_ssh
+      #- name: Deploy to VPS
+      #  uses: cross-the-world/ssh-scp-ssh-pipelines@latest
+      #  with:
+      #    host: ${{ secrets.SSH_HOST }}
+      #    user: ${{ secrets.SSH_USERNAME }}
+      #    port: ${{ secrets.SSH_PORT }}
+      #    pass: ${{ secrets.SSH_PRIVATE_KEY }}
+      #    connect_timeout: 10s
+      #    first_ssh: |
+      #      mkdir -p /root/web/first_ssh &&
+      #    scp: |
+      #      './dist/*' => $WEBAPP_TARGET_PATH
+      #    last_ssh: |
+      #      mkdir -p /root/web/last_ssh

@@ -36,8 +36,8 @@ jobs:
       - name: Copy files to VPS
         uses: cross-the-world/scp-pipeline@v1.2.1
         with:
-          host: ${{ secrets.HOST }}
-          user: ${{ secrets.USERNAME }}
+          host: ${{ secrets.SSH_HOST }}
+          user: ${{ secrets.SSH_USERNAME }}
           port: ${{ secrets.SSH_PORT }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           local: "./dist"

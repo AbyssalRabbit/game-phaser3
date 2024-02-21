@@ -3,7 +3,7 @@ on:
 
 env:
   WEBAPP_NAME: game-phaser3 # set this to your application's name
-  WEBAPP_TARGET_PATH: "/root/web/game-phaser3" # set this to the path to your web app project, defaults to the repository root
+  WEBAPP_TARGET_PATH: "/var/www/game-phaser3" # set this to the path to your web app project, defaults to the repository root
   NODE_VERSION: "20.x" # set this to the node version to use
 
 jobs:
@@ -34,3 +34,5 @@ jobs:
           connect_timeout: 10s
           scp: |
             './dist/*' => $WEBAPP_TARGET_PATH
+          last_ssh: |
+            nginx -s reload

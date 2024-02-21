@@ -28,12 +28,6 @@ jobs:
           npm install
           npm run build --if-present
 
-      - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v3
-        with:
-          name: node-app
-          path: .
-
   deploy:
     permissions:
       contents: none
@@ -41,17 +35,12 @@ jobs:
     needs: build
 
     steps:
-      - name: Download artifact from build job
-        uses: actions/download-artifact@v3
-        with:
-          name: node-app
-
       - name: Copy files to VPS
-        uses: appleboy/scp-action@v0.1.7
+        uses: cross-the-world/scp-pipeline@v1.2.1
         with:
           host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
+          user: ${{ secrets.USERNAME }}
           port: ${{ secrets.SSH_PORT }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: "."
-          target: ${{ env.WEBAPP_TARGET_PATH }}
+          local: "./dist"
+          remote: ${{ env.WEBAPP_TARGET_PATH }}

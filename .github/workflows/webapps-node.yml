@@ -31,6 +31,8 @@ jobs:
     steps:
       - name: Check
         run: |
+          cd ..
+          pwd
           ls -a
           pwd
           cd ..

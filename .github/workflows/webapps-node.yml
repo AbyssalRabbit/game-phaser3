@@ -30,6 +30,7 @@ jobs:
     steps:
       - name: Check
         run: |
+          cd ..
           ls -a
 
       - name: Deploy to VPS

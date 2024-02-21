@@ -40,5 +40,5 @@ jobs:
           user: ${{ secrets.SSH_USERNAME }}
           port: ${{ secrets.SSH_PORT }}
           pass: ${{ secrets.SSH_PRIVATE_KEY }}
-          local: "./dist"
+          local: "./dist/*"
           remote: ${{ env.WEBAPP_TARGET_PATH }}

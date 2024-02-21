@@ -7,7 +7,7 @@ env:
   NODE_VERSION: "20.x" # set this to the node version to use
 
 jobs:
-  build and deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

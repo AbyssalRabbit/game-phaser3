@@ -3,7 +3,7 @@ on:
 
 env:
   WEBAPP_NAME: game-phaser3 # set this to your application's name
-  WEBAPP_TARGET_PATH: "/root/web/game-phaser3" # set this to the path to your web app project, defaults to the repository root
+  WEBAPP_TARGET_PATH: "/root/web/game-phaser3/" # set this to the path to your web app project, defaults to the repository root
   NODE_VERSION: "20.x" # set this to the node version to use
 
 permissions:
@@ -40,5 +40,5 @@ jobs:
           user: ${{ secrets.SSH_USERNAME }}
           port: ${{ secrets.SSH_PORT }}
           pass: ${{ secrets.SSH_PRIVATE_KEY }}
-          local: "./dist/*"
-          remote: ${{ env.WEBAPP_TARGET_PATH }}
+          local: "."
+          remote: /root/web/

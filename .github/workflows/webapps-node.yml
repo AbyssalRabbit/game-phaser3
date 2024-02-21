@@ -31,13 +31,14 @@ jobs:
     steps:
       - name: Check
         run: |
+          pwd
+          ls -a
           cd ..
           pwd
           ls -a
-          pwd
           cd ..
-          ls -a
           pwd
+          ls -a
 
       #- name: Deploy to VPS
       #  uses: cross-the-world/ssh-scp-ssh-pipelines@latest
